@@ -1,0 +1,14 @@
+require_relative '../lib/player.rb'  
+require_relative '../lib/players/human.rb'
+require_relative '../lib/players/computer.rb'
+require_relative '../lib/board.rb' 
+require_relative '../lib/game.rb'
+
+
+ 
+ 
+ game = Game.new
+ 
+ game = Game.new(player_1= Players::Computer.new("X"),player_2= Players::Human.new("O"),board= Board.new)
+ 
+ game = Game.new(player_1= Players::Computer.new("X"),player_2= Players::Computer.new("O"),board= Board.new).play

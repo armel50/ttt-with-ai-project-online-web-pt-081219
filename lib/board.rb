@@ -43,10 +43,20 @@ class Board
   
   def update(position, player)
     
-      if !valid_move?(position)  
-         player.move(self)
+      if !valid_move?(position) 
+        puts "the user needs to stop playing #{position}"
+        nil
+        # player.move(self)
+        # new_position = position
+        # while new_position == position do 
+        #   new_position = player.move(self) 
+        # end 
+         
+        # update(new_position,player)
+          
        else
           @cells[position.to_i - 1] = player.token 
+          display
           player
       end
   end

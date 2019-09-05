@@ -51,11 +51,16 @@ class Game
     
       current_player == player_2 ? past_player = player_1 : past_player = player_2
       if @last_who_played != past_player
-        @last_who_played = @board.update(past_player.move(@board),past_player) 
+        @last_who_played = @board.update(past_player.move(@board),past_player)
+        while !@last_who_played do 
+            @last_who_played = @board.update(past_player.move(@board),past_player)
+        end
         
       else 
         @last_who_played = @board.update(current_player.move(@board),current_player) 
-        
+        while !@last_who_played do 
+          @last_who_played = @board.update(current_player.move(@board),current_player) 
+        end
       end 
    
   end 
@@ -68,10 +73,13 @@ class Game
 
    
    def play 
+     puts "please enter a number between 1-9"
+     board.display
      while over? == false do 
+       puts "please enter a number between 1-9"
       turn 
      end  
-     
+     board.display if draw?
      puts "Cat\'s Game!" if draw? 
      puts "Congratulations #{winner}!" if won? 
    end
@@ -81,3 +89,4 @@ class Game
   end
   
 end
+
